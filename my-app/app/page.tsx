@@ -1,11 +1,12 @@
 "use client";
 
 import Navbar from "@/Components/common/Navbar";
-import { TAmenitesCart, TPlansCart } from "@/Types/Type";
+import { TAmenitesCart, TClickShow, TPlansCart } from "@/Types/Type";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-
+import { IoArrowDownSharp } from "react-icons/io5";
+import { IoMdArrowUp } from "react-icons/io";
 const Home = () => {
   const Cart: TAmenitesCart = [
     {
@@ -52,6 +53,11 @@ const Home = () => {
       link: "Learn More",
     },
   ];
+  const [active, setactive] = useState(false);
+  const ShowClick: TClickShow = () => {
+    setactive(!active);
+    console.log(active);
+  };
   return (
     <>
       <div className="md:max-w-[80vw] m-auto">
@@ -113,7 +119,7 @@ const Home = () => {
           <h1 className="font-semibold text-5xl pt-18 mb-10">
             Why <span className="text-[#0095A4]">Choose Us?</span>
           </h1>
-          <div className="flex gap-x-[33px] pb-8">
+          <div className="flex justify-between pb-8">
             <div className="relative w-[500px] h-[816px]">
               <img
                 src="/ChooseImage.png"
@@ -126,7 +132,7 @@ const Home = () => {
                 className="absolute top-[25rem] left-[15rem]"
               />
             </div>
-            <div>
+            <div className="">
               <p className="max-w-[639px]">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro
                 beatae error laborum ab amet sunt recusandae? Reiciendis natus
@@ -233,7 +239,7 @@ const Home = () => {
       </div>
       <div className="bg-[url('/bg2.png')] pt-[10px] bg-cover bg-center h-[660px]">
         <div className="md:max-w-[80vw] m-auto">
-          <div className="grid grid-cols-2">
+          <div className="flex justify-between">
             <div className="">
               <h1 className="font-semibold text-5xl text-white max-w-[413px] pt-[130px]">
                 Don't <span className="text-[#0395A4]">miss</span> the chance
@@ -296,6 +302,47 @@ const Home = () => {
                 type="submit"
                 className="bg-[#0395A4] w-[379px] h-[45px] rounded-3xl block mt-4 m-auto text-white"
               />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="bg-[#E8EFF4] mt-18">
+        <div className="md:max-w-[80vw] m-auto">
+          <div className="pt-20 grid grid-cols-2 ">
+            <div className="">
+              <h1 className="font-semibold text-5xl max-w-[411px]">
+                Frequently Asked{" "}
+                <span className="text-[#0395A4] ">Questions</span>
+              </h1>
+              <p className="text-[#101C26CC] max-w-[410px] text-[16px] font-normal">
+                You can book massages 7 days a week from 6 am to 11 pm,
+                including public holidays.
+              </p>
+            </div>
+            <div className="">
+              <div className="max-w-[682px]  bg-white py-7  px-5 rounded-2xl shadow-2xl">
+                <div className="flex items-center justify-between">
+                  <h1>How far is nearset bus station ?</h1>
+                  {active ? (
+                    <IoMdArrowUp
+                      className="text-2xl cursor-pointer"
+                      onClick={ShowClick}
+                    />
+                  ) : (
+                    <IoArrowDownSharp
+                      className="text-2xl cursor-pointer"
+                      onClick={ShowClick}
+                    />
+                  )}
+                </div>
+                <p className={`${active ? "block" : "hidden"} pt-[20px]`}>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Praesentium aliquid ab dolorem optio similique cupiditate
+                  nobis error consectetur adipisci? Laboriosam beatae ab
+                  asperiores distinctio quos placeat esse voluptates explicabo
+                  animi?
+                </p>
+              </div>
             </div>
           </div>
         </div>

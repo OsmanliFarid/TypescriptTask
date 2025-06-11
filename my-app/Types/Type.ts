@@ -15,3 +15,5 @@ export type TPlansCart = {
   desc: string;
   link: string;
 }[];
+
+export type TClickShow = () => void;
