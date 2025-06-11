@@ -19,7 +19,7 @@ const Navbar = () => {
               <img src="/braVaa.png" alt="" />
             </Link>
           </div>
-          <div className="flex gap-x-3  justify-end">
+          <div className="flex gap-x-6  justify-end">
             {Navbar.map(({ id, href, title }) => {
               return (
                 <div className="" key={id}>
@@ -32,7 +32,12 @@ const Navbar = () => {
           </div>
           <div className="flex items-center justify-end gap-x-3">
             <Link href="#">Login</Link>
-            <Link href="#">Contact</Link>
+            <Link
+              href="#"
+              className="bg-[#0095A4] p-[10px_30px] rounded-3xl text-white"
+            >
+              Contact
+            </Link>
           </div>
         </div>
       </div>

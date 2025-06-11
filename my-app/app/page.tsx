@@ -1,7 +1,10 @@
+"use client";
+
 import Navbar from "@/Components/common/Navbar";
 import { TAmenitesCart } from "@/Types/Type";
 import Link from "next/link";
 import React from "react";
+import { motion } from "framer-motion";
 
 const Home = () => {
   const Cart: TAmenitesCart = [
@@ -26,27 +29,47 @@ const Home = () => {
       img: "/house.png",
     },
   ];
+
   return (
     <>
       <div className="md:max-w-[80vw] m-auto">
-        <div className="flex mt-14 justify-between">
-          <h1 className="font-bold text-[68px] max-w-[604px]">
+        <div className="flex mt-14 justify-between flex-wrap gap-10">
+          <motion.h1
+            className="font-bold text-[68px] max-w-[604px]"
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: false, amount: 0.3 }}
+          >
             best place to build your{" "}
             <span className="text-[#0095A4]">dream</span>
-          </h1>
-          <div>
+          </motion.h1>
+
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: false, amount: 0.3 }}
+          >
             <p className="font-normal text-[16px] pt-6 max-w-[494px]">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro
               beatae error laborum ab amet sunt recusandae? Reiciendis natus
               perspiciatis optio.
             </p>
-            <Link
-              href="#"
-              className="bg-[#0095A4] p-[10px_30px] text-white font-medium rounded-4xl inline-block mt-5"
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.8 }}
+              viewport={{ once: false, amount: 0.3 }}
             >
-              view now
-            </Link>
-          </div>
+              <Link
+                href="#"
+                className="bg-[#0095A4] p-[10px_30px] text-white font-medium rounded-4xl inline-block mt-5"
+              >
+                view now
+              </Link>
+            </motion.div>
+          </motion.div>
         </div>
 
         <div className="relative bg-[url('/bg.png')] w-full h-[529px] mt-[100px] bg-center bg-cover">
@@ -125,21 +148,25 @@ const Home = () => {
         <p className="text-center mt-4 text-[#101C26] text-[18px]">
           High class features with 24x7 maintenance
         </p>
-        <div className=" grid grid-cols-1 md:grid-cols-4 mt-20 justify-items-center">
-          {Cart.map(({ id, title, img }) => {
-            return (
-              <div key={id} className="w-[278px] h-[334px] shadow-2xl">
-                <div className="text-center">
-                  <div className="bg-[#EAFAFB] m-[45px_auto_25px_auto] rounded-[50%] w-[108px] h-[108px] flex justify-center items-center">
-                    <img src={img} alt="" />
-                  </div>
-                  <h1 className="text-[#0C1623] text-2xl font-medium">
-                    {title}
-                  </h1>
+
+        <div className="grid grid-cols-1 md:grid-cols-4 mt-20 justify-items-center gap-8">
+          {Cart.map(({ id, title, img }, index) => (
+            <motion.div
+              key={id}
+              className="w-[278px] h-[334px] shadow-2xl bg-white rounded-xl"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
+              viewport={{ once: false, amount: 0.3 }}
+            >
+              <div className="text-center">
+                <div className="bg-[#EAFAFB] m-[45px_auto_25px_auto] rounded-[50%] w-[108px] h-[108px] flex justify-center items-center">
+                  <img src={img} alt={title} />
                 </div>
+                <h1 className="text-[#0C1623] text-2xl font-medium">{title}</h1>
               </div>
-            );
-          })}
+            </motion.div>
+          ))}
         </div>
       </div>
     </>
