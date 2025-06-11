@@ -8,3 +8,10 @@ export type TAmenitesCart = {
   title: string;
   img: string;
 }[];
+export type TPlansCart = {
+  id: number;
+  title: string;
+  img: string;
+  desc: string;
+  link: string;
+}[];
