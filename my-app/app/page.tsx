@@ -1,8 +1,31 @@
 import Navbar from "@/Components/common/Navbar";
+import { TAmenitesCart } from "@/Types/Type";
 import Link from "next/link";
 import React from "react";
 
 const Home = () => {
+  const Cart: TAmenitesCart = [
+    {
+      id: 1,
+      title: "Multimedia center",
+      img: "/music.png",
+    },
+    {
+      id: 2,
+      title: "Swimming pool",
+      img: "/swim.png",
+    },
+    {
+      id: 3,
+      title: "Swimming pool",
+      img: "/swim.png",
+    },
+    {
+      id: 4,
+      title: "Guest Suites",
+      img: "/house.png",
+    },
+  ];
   return (
     <>
       <div className="md:max-w-[80vw] m-auto">
@@ -102,8 +125,23 @@ const Home = () => {
         <p className="text-center mt-4 text-[#101C26] text-[18px]">
           High class features with 24x7 maintenance
         </p>
+        <div className=" grid grid-cols-1 md:grid-cols-4 mt-20 justify-items-center">
+          {Cart.map(({ id, title, img }) => {
+            return (
+              <div key={id} className="w-[278px] h-[334px] shadow-2xl">
+                <div className="text-center">
+                  <div className="bg-[#EAFAFB] m-[45px_auto_25px_auto] rounded-[50%] w-[108px] h-[108px] flex justify-center items-center">
+                    <img src={img} alt="" />
+                  </div>
+                  <h1 className="text-[#0C1623] text-2xl font-medium">
+                    {title}
+                  </h1>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
-      <div className=""></div>
     </>
   );
 };
