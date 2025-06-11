@@ -1,7 +1,7 @@
 "use client";
 
 import Navbar from "@/Components/common/Navbar";
-import { TAmenitesCart } from "@/Types/Type";
+import { TAmenitesCart, TPlansCart } from "@/Types/Type";
 import Link from "next/link";
 import React from "react";
 import { motion } from "framer-motion";
@@ -29,7 +29,29 @@ const Home = () => {
       img: "/house.png",
     },
   ];
-
+  const PlansCart: TPlansCart = [
+    {
+      id: 1,
+      title: "2BHK",
+      desc: "Increase high-intent traffic with ads across search engines.",
+      img: "/plansImage.png",
+      link: "Learn More",
+    },
+    {
+      id: 1,
+      title: "5 BHK",
+      desc: "Drive organic traffic and increase visibility across search engines.",
+      img: "/plansImage2.png",
+      link: "Learn More",
+    },
+    {
+      id: 1,
+      title: "4 BHK",
+      desc: "Advertise across social media networks such as Facebook and Instagram.",
+      img: "/plansImage3.png",
+      link: "Learn More",
+    },
+  ];
   return (
     <>
       <div className="md:max-w-[80vw] m-auto">
@@ -167,6 +189,115 @@ const Home = () => {
               </div>
             </motion.div>
           ))}
+        </div>
+      </div>
+      <div className="bg-[#E8EFF4] pb-[80px] mt-20">
+        <div className="md:max-w-[80vw] m-auto">
+          <div className="text-center pt-38">
+            <h1 className="font-semibold text-5xl text-[#0C1623]">
+              Floor <span className="text-[#0095A4]">Plans</span>
+            </h1>
+            <p className="mt-6 pb-9">
+              Best floor plans to accoomodate all your utilities
+            </p>
+          </div>
+          <div className="">
+            <div className="grid grid-cols-1  justify-items-center gap-y-6 md:gap-y-0 md:grid-cols-3 mt-7">
+              {PlansCart.map(({ id, title, img, desc, link }) => {
+                return (
+                  <>
+                    <div
+                      className="w-[370px] h-[446px] shadow-2xl rounded-2xl"
+                      key={id}
+                    >
+                      <img src={img} alt="" />
+                      <h1 className="text-[#0C1623] font-semibold text-3xl text-center pt-4">
+                        {title}
+                      </h1>
+                      <p className="text-[#3B464F] font-normal text-[16px] pt-3 text-center tracking-[3%]">
+                        {desc}
+                      </p>
+                      <Link
+                        href="#"
+                        className="flex justify-center mt-3 gap-x-3 text-[#0997A4] font-medium text-[16px]"
+                      >
+                        {link} <span>⟶</span>
+                      </Link>
+                    </div>
+                  </>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="bg-[url('/bg2.png')] pt-[10px] bg-cover bg-center h-[660px]">
+        <div className="md:max-w-[80vw] m-auto">
+          <div className="grid grid-cols-2">
+            <div className="">
+              <h1 className="font-semibold text-5xl text-white max-w-[413px] pt-[130px]">
+                Don't <span className="text-[#0395A4]">miss</span> the chance
+              </h1>
+              <p className="text-white max-w-[433px] pt-[20px]">
+                Your early request will give you better oppurtunities be first
+                to grab the offer
+              </p>
+            </div>
+            <div className="bg-[url('/formbg.png')] bg-center bg-cover w-[510px] h-[644px]">
+              <h1 className="text-center font-semibold text-2xl pt-[90px]">
+                Get quote
+              </h1>
+              <form
+                method="get"
+                className="p-14  grid grid-cols-2 gap-y-7 gap-x-10"
+              >
+                <div className="">
+                  <h1>First Name</h1>
+                  <input
+                    type="text"
+                    placeholder="Enter your first name"
+                    className=" border-3 outline-0 border-[#76989A]"
+                  />
+                </div>
+                <div className="">
+                  <h1>Last Name</h1>
+                  <input
+                    type="text"
+                    placeholder="Enter your last name"
+                    className="border-3 outline-0 border-[#76989A]"
+                  />
+                </div>
+                <div className="">
+                  <h1>Email Address</h1>
+                  <input
+                    type="text"
+                    placeholder="Enter  email address"
+                    className="border-3 outline-0 border-[#76989A]"
+                  />
+                </div>
+                <div className="">
+                  <h1>Phone Number</h1>
+                  <input
+                    type="text"
+                    placeholder="Enter phone number"
+                    className="border-3 outline-0 border-[#76989A]"
+                  />
+                </div>
+              </form>
+              <div className="mx-14">
+                <h1>How can we help?</h1>
+                <input
+                  type="text"
+                  placeholder="Tell us how we can help you..."
+                  className="border-3 outline-0 border-[#76989A] w-[404px] pb-[100px]"
+                />
+              </div>
+              <input
+                type="submit"
+                className="bg-[#0395A4] w-[379px] h-[45px] rounded-3xl block mt-4 m-auto text-white"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </>
